@@ -22,10 +22,4 @@ public class Person {
     @NotBlank(message = "Last name cannot be empty")
     private String lastName;
 
-    @PrePersist
-    public void generateId() {
-        if (this.id == null) {
-            this.id = UUID.randomUUID();
-        }
-    }
 }

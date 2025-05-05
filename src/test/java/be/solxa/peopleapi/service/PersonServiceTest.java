@@ -88,11 +88,12 @@ public class PersonServiceTest {
         newPerson.setFirstName("Jane");
         newPerson.setLastName("Smith");
 
-        when(personRepository.save(any(Person.class))).thenAnswer(invocation -> {
-            Person savedPerson = invocation.getArgument(0);
-            assertNotNull(savedPerson.getId()); // ID should be generated
-            return savedPerson;
-        });
+        Person savedPerson = new Person();
+        savedPerson.setId(UUID.randomUUID());  // assuming the ID would be set during saving
+        savedPerson.setFirstName("Jane");
+        savedPerson.setLastName("Smith");
+
+        when(personRepository.save(any(Person.class))).thenReturn(savedPerson);
 
         Person result = personService.createPerson(newPerson);
 

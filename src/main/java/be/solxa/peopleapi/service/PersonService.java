@@ -31,7 +31,6 @@ public class PersonService {
 
     public Person createPerson(Person person) {
         validatePerson(person);
-        person.generateId();
         return personRepository.save(person);
     }
 
